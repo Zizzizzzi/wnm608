@@ -22,7 +22,7 @@
 		<div class="flex-stretch"></div>
 			<nav class="flex-none nav">
 				<ul class="container display-flex">
-					<li><a href="index.html">Home</a></li>
+					<li><a href="index.php">Home</a></li>
 					<li><a href="product_list.php">Store</a></li>
 					<li><a href="about.php">About</a></li>
 					<li><a href="cart_list.php">Cart</a></li>
