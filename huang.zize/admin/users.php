@@ -26,7 +26,7 @@ $classes = implode(",", $user->classes);
             </div>
             <div class="form-control">
                 <lable class="form-label">Type</lable>
-                <input type="text" value="$user->type" placeholder="Number" class="form-input">
+                <input type="text" value="$user->type" placeholder="type" class="form-input">
             </div>
             <div class="form-control">
                 <lable class="form-label">Email</lable>
