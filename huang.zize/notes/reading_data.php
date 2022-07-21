@@ -31,10 +31,7 @@ $users_array = file_get_json("../data/users.json");
  				echo "<li>{$notes_object->notes[$i]}</li>";
  			}
 
-
  			 ?>
-
-
  		</div>
 
  		<div class="card soft">
