@@ -14,7 +14,7 @@
 		<div class="card soft">
 			<h2>About Zizzi Art Store</h2>
 
-			<p>This is information about Zizzi # <?= $_GET['id'] ?>
+			<p>This is information about Zizzi 
 			</p>
 		</div>
 	</div>

@@ -2,11 +2,13 @@
 
 session_start();
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
 function print_p($v) {
       echo "<pre>",print_r($v),"</pre>";
 }
-
 
 function file_get_json($filename) {
       $file = file_get_contents($filename);
@@ -14,6 +16,7 @@ function file_get_json($filename) {
 }
 
 include_once "auth.php";
+
 function makeConn(){
       $conn = new mysqli(...MYSQLIAuth());
       if($conn->connect_errno) die($conn->connect_error);
@@ -31,33 +34,29 @@ function makeQuery ($conn,$qry){
       return $a;
 }
 
-
-// CART FUNCTIONS
-
-
-
+/* CART FUNCTIONS */
 function array_find($array,$fn){
-	foreach($array as $o) if($fn($o)) return $o;
-	return false;
+      foreach($array as $o) if($fn($o)) return $o;
+      return false;
 }
+
 function getCart(){
-	return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
+      return isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
 }
 
 function addToCart($id,$amount,$color) {
-    $cart = getCart();
+      $cart = getCart();
+      $p = array_find($cart,function($o) use($id) {return $o->id==$id; });
 
-	$p = array_find($cart,function($o) use($id) {return $o->id==$id; });
-
-	if ($p) {
-        $p->amount += $amount;
-    } else {
-		$_SESSION['cart'][] = (object)[
-        "id"=>$id,
-        "amount"=>$amount,
-        "color"=>$color
-        ];
-    }
+      if ($p) {
+            $p->amount += $amount;
+      } else {
+            $_SESSION['cart'][] = (object)[
+            "id"=>$id,
+            "amount"=>$amount,
+            "color"=>$color
+            ];
+      }
 }
 
 function resetCart(){ 
@@ -83,7 +82,7 @@ function getCartItems() {
       if(empty($cart)) return [];
 
       $ids = implode(",",array_map(function($o){return $o->id;},$cart));
-      $data = makeQuery(makeConn(),"SELECT * FROM `products` WHERE `id` IN ($ids)");
+      $data = makeQuery(makeConn(),"SELECT * FROM `products` WHERE `id` IN($ids)");
 
       return array_map(function($o) use ($cart) {
             $p = cartItemById($o->id);
