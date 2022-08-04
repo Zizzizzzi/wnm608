@@ -4,7 +4,7 @@ include "../lib/php/functions.php";
 
 
 $empty_product = (object)[
-	"name"=>"abstract",
+	"name"=>"Abstract",
 	"price"=>"299.00",
     "amount"=>"3",
 	"style"=>"abstract",
@@ -59,7 +59,7 @@ try {
                     `date_create`,
                     `date_modify`
                 )
-                VALUES (?,?,?,?,?,?,NOW(),NOW())
+                VALUES (?,?,?,?,?,?,?,NOW(),NOW())
                 ");
             $statement->execute([
                 $_POST['product-name'],
@@ -170,7 +170,7 @@ $form = <<<HTML
 
    <div class="form-control">
        <label class="form-label" for="product-description"> Description</label>
-       <textarea class="form-input" name="product-description" id="product-description" placeholder="Enter the Product Description" >$o->description</textarea>
+       <textarea class="form-input" name="product-description" id="product-description" placeholder="Enter the Product Description">$o->description</textarea>
    </div>
 
    <div class="form-control">
