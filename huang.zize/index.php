@@ -1,6 +1,7 @@
 <?php
 
 include_once "lib/php/functions.php";
+include_once "parts/templates.php";
 
 ?>
 <!DOCTYPE html>
@@ -30,7 +31,7 @@ include_once "lib/php/functions.php";
 					<li><a href="index.php">Home</a></li>
 					<li><a href="product_list.php">Store</a></li>
 					<li><a href="about.php">About</a></li>
-					<li><a href="cart_list.php">Cart</a></li>
+					<li><a href="product_cart.php">Cart</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -66,6 +67,12 @@ include_once "lib/php/functions.php";
 				</p>
 			</div>
 		</article>
+	</div>
+	<div class="container">
+		<h2>Latest Abstract</h2>
+		<?php recommendedCategory("abstract"); ?>
+		<h2>Latest Digital</h2>
+		<?php recommendedCategory("digital"); ?>
 	</div>
 
 </body>

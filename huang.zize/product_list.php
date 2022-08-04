@@ -25,7 +25,7 @@ include_once "parts/templates.php";
 		<h2>Product List</h2>
 
 		<div class="form-control">
-			<form class="hotdog light" id="product-search">
+			<form class="hotdog light" id="product_search">
 				<input type="search" placeholder="Search Products">
 			</form>
 		</div>

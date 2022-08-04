@@ -16,17 +16,24 @@ function file_get_json($filename) {
 }
 
 include_once "auth.php";
-
 function makeConn(){
       $conn = new mysqli(...MYSQLIAuth());
       if($conn->connect_errno) die($conn->connect_error);
       $conn->set_charset('utf8');
       return $conn;
 }
+function makePDOConn() {
+      try {
+            $conn = new PDO(...PDOAuth());
+      } catch(PDOException $e) {
+            die($e->getMessage());
+      }
+      return $conn;
+}
 
 function makeQuery ($conn,$qry){
       $result = $conn->query($qry);
-      if($conn->errno)die($conn->error);
+      if($conn->errno)die($conn->error); 
       $a = [];
       while($row = $result->fetch_object()){
             $a[] = $row;
@@ -70,7 +77,7 @@ function cartItemById($id) {
 function makeCartBadge() {
       $cart = getCart();
       if (count($cart) == 0) {
-            return "";
+            return "0";
       } else {
             return array_reduce($cart,function($r,$o){return $r+$o->amount;},0);
       }
