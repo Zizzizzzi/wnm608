@@ -98,6 +98,10 @@ HTML;
 }
 
 
+function recommendedAnything($limit=3) {
+    $result = makeQuery(makeConn(),"SELECT * FROM `products` ORDER BY rand() LIMIT $limit");
+    recommendedProducts($result);
+}
 function recommendedCategory($cat,$limit=3) {
     $result = makeQuery(makeConn(),"SELECT * FROM `products` WHERE `style`='$cat' ORDER BY `date_create` DESC LIMIT $limit");
     recommendedProducts($result);
