@@ -24,7 +24,7 @@ function makeConn(){
 }
 function makePDOConn() {
       try {
-            $conn = new PDO(...PDOAuth());
+            $conn = new PDO(...MYSQLIAuth());
       } catch(PDOException $e) {
             die($e->getMessage());
       }
@@ -77,7 +77,7 @@ function cartItemById($id) {
 function makeCartBadge() {
       $cart = getCart();
       if (count($cart) == 0) {
-            return "0";
+            return "";
       } else {
             return array_reduce($cart,function($r,$o){return $r+$o->amount;},0);
       }
