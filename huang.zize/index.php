@@ -17,7 +17,7 @@ include_once "parts/templates.php";
 	<link rel="stylesheet" type="text/css" href="lib/css/gridsystem.css">
 	<link rel="stylesheet" type="text/css" href="css/storetheme.css">
 </head>
-<body>
+<body class="flush">
 	
 	<!-- header>h1+p -->
 	<header class="navbar">
